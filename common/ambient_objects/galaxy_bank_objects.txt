@@ -1,0 +1,17 @@
+ambient_object = {
+	name = "galaxy_civilian_ship_object"
+	entity = "eventship_07_entity"
+	selectable = yes
+	show_name = yes
+	tooltip = "galaxy_civilian_ship_object_tooltip"
+	description = "galaxy_civilian_ship_object_desc"
+}
+
+ambient_object = {
+	name = "galaxy_bank_small_debris_object"
+	entity = "debris_small_01_entity"
+	selectable = yes
+	show_name = yes
+	tooltip = "galaxy_bank_small_debris_object_tooltip"
+	description = "galaxy_bank_small_debris_object_desc"
+}

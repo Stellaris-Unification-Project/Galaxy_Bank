@@ -1,0 +1,9 @@
+galaxy_bank_sold_slaves = { pop_citizen_happiness = -0.40 }
+
+bank_looted_planet = {
+	icon = "gfx/interface/icons/planet_modifiers/pm_slave_colony.dds"
+	icon_frame = 3
+	planet_jobs_produces_mult = -0.50
+	planet_stability_add = -20
+	planet_crime_add = 50
+}

@@ -1,0 +1,8 @@
+civic_galaxy_bank = {
+	modification = no
+	pickable_at_start = no
+	icon = "gfx/interface/icons/governments/civics/civic_agrarian_idyll.dds"
+	potential = { country_type = { value = galaxy_bank_home } }
+	playable = { always = no }
+	modifier = {}
+}

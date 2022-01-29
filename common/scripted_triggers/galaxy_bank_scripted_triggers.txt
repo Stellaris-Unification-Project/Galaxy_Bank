@@ -1,0 +1,63 @@
+has_ressources_for_loans = {
+	OR = {
+		has_resource = { type = energy amount >= 1 }
+		has_resource = { type = minerals amount >= 1 }
+		has_resource = { type = food amount >= 1 }
+		has_resource = { type = consumer_goods amount >= 1 }
+		has_resource = { type = alloys amount >= 1 }
+	}
+}
+
+planet_can_be_attacked = {
+	NOR = {
+		num_pops < 2
+		has_modifier = bank_looted_planet
+	}
+}
+
+galaxy_bank_fleet_orbit_planet = {
+	exists = owner
+	owner = { is_country_type = galaxy_bank_faction }
+	is_fleet_idle = yes
+	exists = orbit
+	orbit = { 
+		planet = {
+			exists = owner
+			owner = { has_country_flag = galaxy_bank_loan_target }
+			is_occupied_flag = no
+			NOR = { has_planet_flag = galaxy_bank_planet_attacked has_modifier = bank_looted_planet }
+		}
+	}
+}
+
+galaxy_bank_fleet_orbit_occuped_planet = {
+	exists = owner
+	owner = { is_country_type = galaxy_bank_faction }
+	is_fleet_idle = yes
+	exists = orbit
+	orbit = { 
+		planet = {
+			exists = owner
+			owner = { has_country_flag = galaxy_bank_loan_target }
+			OR = { 
+				is_occupied_flag = yes
+				has_modifier = bank_looted_planet
+			}
+		}
+	}
+}
+
+has_valaible_colony_target_for_bank = {
+	any_owned_planet = {
+		NOR = { 
+			is_occupied_flag = yes
+			has_modifier = bank_looted_planet
+		}
+	}
+}
+
+has_no_bank_actions = {
+	check_variable = { which = galaxy_bank_actions_var value <= 0 }
+}
+
+pay_no_taxes = { check_variable = { which = galaxy_bank_actions_var value >= 35 } }

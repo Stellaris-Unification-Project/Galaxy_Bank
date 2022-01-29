@@ -1,0 +1,73 @@
+# Triggers when the game starts
+on_game_start = {
+	events = {
+		GalaxyBankEvents.10
+	}
+}
+
+# No scope, like on_game_start
+on_decade_pulse = {
+	events = {
+		GalaxyBankEvents.0
+	}
+}
+
+# No scope, like on_game_start
+on_yearly_pulse = {
+	events = {
+		GalaxyBankEvents.52
+		GalaxyBankEvents.2005
+		
+	}
+}
+# No scope, like on_game_start
+on_bi_yearly_pulse = {
+	events = {
+		GalaxyBankEvents.51
+	}
+}
+
+# No scope, like on_game_start
+on_five_year_pulse = {
+	events = {
+		GalaxyBankEvents.50
+	}
+}
+
+# Triggers when trying to open the diplomacy view for countries with custom diplomacy.
+# Country scope
+# This = target country (player)
+# From = source country
+on_custom_diplomacy = {
+	events = {
+		GalaxyBankEvents.99
+	}
+}
+
+#From = Planet scope
+#This = Fleet scope
+on_fleet_enter_orbit = {
+	events = {
+		GalaxyBankEvents.2001
+	}
+}
+
+# A planets controller becomes a country not the same as the owner.
+# Root = Planet
+# From = Planet Owner
+# FromFrom = Planet Controller (the one occupying)
+on_planet_occupied = {
+	events = {
+		GalaxyBankEvents.2004
+	}
+}
+
+# Triggers country_event for the defender upon victory
+# Root = country, planet owner
+# From = country, attack leader
+# FromFrom = planet
+on_planet_defenders_win = {
+	events = {
+		GalaxyBankEvents.2006
+	}
+}

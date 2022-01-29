@@ -1,0 +1,7 @@
+# Galaxy Bank
+gov_galaxy_bank = {
+	ruler_title = RT_BANK_OFFICIER
+	should_force_rename = yes
+	possible = { has_valid_civic = civic_galaxy_bank }
+	weight = { base = 100000 }
+}

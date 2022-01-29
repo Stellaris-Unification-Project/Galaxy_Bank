@@ -1,0 +1,508 @@
+galaxy_bank_loan_set_flags = {
+	if = { 
+		limit = { 
+			NOR = { 
+				has_country_flag = galaxy_bank_loan_recall_2 
+				has_country_flag = galaxy_bank_loan_recall_3 
+				has_country_flag = galaxy_bank_loan_recall_4
+			} 
+		} 
+		galaxy_bank_loan_remove_flags = yes
+		set_country_flag = galaxy_bank_loan_recall_2
+	}
+	else_if = { 
+		limit = { 
+			has_country_flag = galaxy_bank_loan_recall_2
+			NOR = { 			
+				has_country_flag = galaxy_bank_loan_recall_3
+				has_country_flag = galaxy_bank_loan_recall_4
+			} 
+		} 
+		galaxy_bank_loan_remove_flags = yes
+		set_country_flag = galaxy_bank_loan_recall_3
+	}
+	else_if = { 
+		limit = { 
+			has_country_flag = galaxy_bank_loan_recall_3
+			NOR = { 			
+				has_country_flag = galaxy_bank_loan_recall_2
+				has_country_flag = galaxy_bank_loan_recall_4
+			} 
+		} 
+		galaxy_bank_loan_remove_flags = yes
+		set_country_flag = galaxy_bank_loan_recall_4
+	}
+}
+
+galaxy_bank_loan_remove_flags = {	
+	remove_country_flag = galaxy_bank_loan_recall_2
+	remove_country_flag = galaxy_bank_loan_recall_3
+	remove_country_flag = galaxy_bank_loan_recall_4
+}
+
+
+galaxy_bank_deposit_credits_100_times = {	
+	while = {
+		limit = { has_resource = { type = energy amount >= 1 } }
+		add_resource = { energy = -1 }
+		change_variable = { which = galaxy_bank_energy_var value = 0.90 }
+		if = { limit = { pay_no_taxes = yes } change_variable = { which = galaxy_bank_energy_var value = 0.10 } }
+	}
+}
+
+galaxy_bank_deposit_credits_1000_times = { while = { count = 10 galaxy_bank_deposit_credits_100_times = yes } }
+galaxy_bank_deposit_credits_10000_times = { while = { count = 10 galaxy_bank_deposit_credits_1000_times = yes } }
+galaxy_bank_deposit_credits_100000_times = { while = { count = 10 galaxy_bank_deposit_credits_10000_times = yes } }
+galaxy_bank_deposit_credits_1000000_times = { while = { count = 10 galaxy_bank_deposit_credits_100000_times = yes } }
+
+galaxy_bank_deposit_minerals_100_times = {	
+	while = {
+		limit = { has_resource = { type = minerals amount >= 1 } }
+		add_resource = { minerals = -1 }
+		change_variable = { which = galaxy_bank_mineral_var value = 0.90 }
+		if = { limit = { pay_no_taxes = yes } change_variable = { which = galaxy_bank_mineral_var value = 0.10 } }
+	}
+}
+
+galaxy_bank_deposit_minerals_1000_times = { while = { count = 10 galaxy_bank_deposit_minerals_100_times = yes } }
+galaxy_bank_deposit_minerals_10000_times = { while = { count = 10 galaxy_bank_deposit_minerals_1000_times = yes } }
+galaxy_bank_deposit_minerals_100000_times = { while = { count = 10 galaxy_bank_deposit_minerals_10000_times = yes } }
+galaxy_bank_deposit_minerals_1000000_times = { while = { count = 10 galaxy_bank_deposit_minerals_100000_times = yes } }
+
+galaxy_bank_deposit_foods_100_times = {	
+	while = {
+		limit = { has_resource = { type = food amount >= 1 } }
+		add_resource = { food = -1 }
+		change_variable = { which = galaxy_bank_food_var value = 0.90 }
+		if = { limit = { pay_no_taxes = yes } change_variable = { which = galaxy_bank_food_var value = 0.10 } }
+	}
+}
+
+galaxy_bank_deposit_foods_1000_times = { while = { count = 10 galaxy_bank_deposit_foods_100_times = yes } }
+galaxy_bank_deposit_foods_10000_times = { while = { count = 10 galaxy_bank_deposit_foods_1000_times = yes } }
+galaxy_bank_deposit_foods_100000_times = { while = { count = 10 galaxy_bank_deposit_foods_10000_times = yes } }
+galaxy_bank_deposit_foods_1000000_times = { while = { count = 10 galaxy_bank_deposit_foods_100000_times = yes } }
+
+galaxy_bank_deposit_consumers_100_times = {	
+	while = {
+		limit = { has_resource = { type = consumer_goods amount >= 1 } }
+		add_resource = { consumer_goods = -1 }
+		change_variable = { which = galaxy_bank_consumer_var value = 0.90 }
+		if = { limit = { pay_no_taxes = yes } change_variable = { which = galaxy_bank_consumer_var value = 0.10 } }
+	}
+}
+
+galaxy_bank_deposit_consumers_1000_times = { while = { count = 10 galaxy_bank_deposit_consumers_100_times = yes } }
+galaxy_bank_deposit_consumers_10000_times = { while = { count = 10 galaxy_bank_deposit_consumers_1000_times = yes } }
+galaxy_bank_deposit_consumers_100000_times = { while = { count = 10 galaxy_bank_deposit_consumers_10000_times = yes } }
+galaxy_bank_deposit_consumers_1000000_times = { while = { count = 10 galaxy_bank_deposit_consumers_100000_times = yes } }
+
+galaxy_bank_deposit_alloys_100_times = {	
+	while = {
+		limit = { has_resource = { type = alloys amount >= 1 } }
+		add_resource = { alloys = -1 }
+		change_variable = { which = galaxy_bank_alloy_var value = 0.90 }
+		if = { limit = { pay_no_taxes = yes } change_variable = { which = galaxy_bank_alloy_var value = 0.10 } }
+	}
+}
+
+galaxy_bank_deposit_alloys_1000_times = { while = { count = 10 galaxy_bank_deposit_alloys_100_times = yes } }
+galaxy_bank_deposit_alloys_10000_times = { while = { count = 10 galaxy_bank_deposit_alloys_1000_times = yes } }
+galaxy_bank_deposit_alloys_100000_times = { while = { count = 10 galaxy_bank_deposit_alloys_10000_times = yes } }
+galaxy_bank_deposit_alloys_1000000_times = { while = { count = 10 galaxy_bank_deposit_alloys_100000_times = yes } }
+
+galaxy_bank_pay_loan_100_times = {	
+	while = {
+		limit = { check_variable = { which = galaxy_bank_energy_var value > 0 } check_variable = { which = galaxy_bank_loans_var value > 0 } }
+		change_variable = { which = galaxy_bank_energy_var value = -1 }
+		change_variable = { which = galaxy_bank_loans_var value = -1 }
+	}
+}
+
+galaxy_bank_pay_loan_1000_times = { while = { count = 10 galaxy_bank_pay_loan_100_times = yes } }
+galaxy_bank_pay_loan_10000_times = { while = { count = 10 galaxy_bank_pay_loan_1000_times = yes } }
+galaxy_bank_pay_loan_100000_times = { while = { count = 10 galaxy_bank_pay_loan_10000_times = yes } }
+galaxy_bank_pay_loan_1000000_times = { while = { count = 10 galaxy_bank_pay_loan_100000_times = yes } }
+
+galaxy_bank_pay_loan_sell_slaves_100_times = {	
+	while = {
+		limit = { check_variable = { which = galaxy_bank_loans_var value > 0 } any_owned_planet = { num_pops > 1 } }
+		change_variable = { which = galaxy_bank_loans_var value = -1000 }
+		random_owned_planet = { limit = { num_pops > 1 } random_owned_pop = { kill_pop = yes } }
+	}
+}
+
+galaxy_bank_pay_loan_sell_slaves_1000_times = { while = { count = 10 galaxy_bank_pay_loan_sell_slaves_100_times = yes } }
+galaxy_bank_pay_loan_sell_slaves_10000_times = { while = { count = 10 galaxy_bank_pay_loan_sell_slaves_1000_times = yes } }
+
+galaxy_bank_pay_loan_sell_ressources_100_times = {	
+	while = {
+		limit = { check_variable = { which = galaxy_bank_loans_var value > 0 } has_ressources_for_loans = yes }
+		if = { limit = { has_resource = { type = energy amount >= 1 } } add_resource = { energy = -1 } change_variable = { which = galaxy_bank_loans_var value = -1 } }
+		if = { limit = { has_resource = { type = minerals amount >= 1 } } add_resource = { minerals = -1 } change_variable = { which = galaxy_bank_loans_var value = -1 } }
+		if = { limit = { has_resource = { type = food amount >= 1 } } add_resource = { food = -1 } change_variable = { which = galaxy_bank_loans_var value = -0.5 } }
+		if = { limit = { has_resource = { type = consumer_goods amount >= 1 } } add_resource = { consumer_goods = -1 } change_variable = { which = galaxy_bank_loans_var value = -4 } }
+		if = { limit = { has_resource = { type = alloys amount >= 1 } } add_resource = { alloys = -1 } change_variable = { which = galaxy_bank_loans_var value = -6 } }
+	}
+}
+
+galaxy_bank_pay_loan_sell_ressources_1000_times = { while = { count = 10 galaxy_bank_pay_loan_sell_ressources_100_times = yes } }
+galaxy_bank_pay_loan_sell_ressources_10000_times = { while = { count = 10 galaxy_bank_pay_loan_sell_ressources_1000_times = yes } }
+galaxy_bank_pay_loan_sell_ressources_100000_times = { while = { count = 10 galaxy_bank_pay_loan_sell_ressources_10000_times = yes } }
+galaxy_bank_pay_loan_sell_ressources_1000000_times = { while = { count = 10 galaxy_bank_pay_loan_sell_ressources_100000_times = yes } }
+
+create_bank_country_faction = {
+	if = {
+		limit = { NOT = { exists = event_target:bank_country_faction } }
+		create_country = {
+			name = event_target:bank_country
+			type = galaxy_bank_faction
+			species = event_target:bank_country
+			flag = event_target:bank_country
+			name_list = "BANK"
+		}
+		last_created_country = { 
+			set_country_flag = bank_country_faction
+			save_global_event_target_as = bank_country_faction 
+			random_list = { 
+				10 = { set_graphical_culture = mammalian_01 }
+				10 = { set_graphical_culture = avian_01 }
+				10 = { set_graphical_culture = arthropoid_01 }
+				10 = { set_graphical_culture = molluscoid_01 }
+				10 = { set_graphical_culture = fungoid_01 }			
+				10 = { modifier = { factor = 0 NOT = { host_has_dlc = "Plantoid" } } set_graphical_culture = plantoid_01 }
+				10 = { modifier = { factor = 0 NOT = { host_has_dlc = "Humanoids Species Pack" } } set_graphical_culture = humanoid_01 }
+			}
+			give_technology = { tech = tech_titans }
+			give_technology = { tech = tech_arc_emitter_1 }
+			give_technology = { tech = tech_zero_point_power }
+			every_country = {
+				#Remove Crisis And Dangerous Countries Here
+				establish_communications_no_message = last_created_country 
+				#set_faction_hostility = { target = last_created_country set_hostile = no set_neutral = yes set_friendly = no }
+			}
+		}
+	}
+}
+
+create_bank_country_leader = {
+	random_country = {
+		limit = { is_country_type = galaxy_bank_faction  }
+		random_list = {
+			30 = { create_leader = { class = admiral species = owner_main_species name = random skill = 1 } }
+			15 = { create_leader = { class = admiral species = owner_main_species name = random skill = 3 } }
+			5 = { create_leader = { class = admiral species = owner_main_species name = random skill = 5 } }
+			30 = { create_leader = { class = admiral species = owner_main_species name = random skill = 1 traits = { trait = leader_trait_aggressive trait = leader_trait_engineer } } }
+			15 = { create_leader = { class = admiral species = owner_main_species name = random skill = 3 traits = { trait = leader_trait_aggressive trait = leader_trait_engineer trait = leader_trait_cautious } } }
+			5 = { create_leader = { class = admiral species = owner_main_species name = random skill = 5 traits = { trait = leader_trait_aggressive trait = leader_trait_engineer trait = leader_trait_cautious trait = leader_trait_scout } } }
+		}	
+		last_created_leader = { set_leader_flag = bank_country_leader_leader }
+	}
+}
+
+galaxy_bank_fleet_attack_planet = {
+	random_owned_planet = {
+		limit = { NOR = { is_occupied_flag = yes has_modifier = bank_looted_planet } }
+		weights = {
+			base = 1
+			modifier = { add = 5 num_pops > 20 }
+			modifier = { add = 5 num_pops > 40 }
+			modifier = { add = 5 num_pops > 60 }
+			modifier = { add = 5 num_pops > 80 }
+			modifier = { add = 5 num_pops > 100 }
+			modifier = { add = 20 num_pops > 150 }
+			modifier = { add = 35 num_pops > 300 }
+		}
+		save_event_target_as = bank_target_location
+		solar_system = {
+			random_system = {
+				limit = {
+					NOR = { has_star_flag = hostile_system has_star_flag = guardian has_star_flag = enclave has_star_flag = primitive_system }
+					distance = { source = prev use_bypasses = no min_jumps = 4 max_jumps = 12 }
+					OR = {
+						NOT = { exists = space_owner }
+						space_owner = { NOT = { is_same_value = root } }
+					}
+				}
+				random_system_planet = { limit = { is_primary_star = yes } save_event_target_as = bank_spawn_location } 
+			}
+		}
+	}
+	create_bank_country_leader = yes
+	create_fleet = {
+		settings = { spawn_debris = no }
+		effect = {
+			set_owner = event_target:bank_country_faction				
+			while = { count = 5 create_ship = { name = random random_existing_design = corvette graphical_culture = event_target:bank_country_faction } }
+			while = { count = 2 create_ship = { name = random random_existing_design = destroyer graphical_culture = event_target:bank_country_faction } }	
+			while = { count = 1 create_ship = { name = random random_existing_design = cruiser graphical_culture = event_target:bank_country_faction } }
+			while = { count = 10 random_list = { 10 = { create_ship = { name = random random_existing_design = corvette graphical_culture = event_target:bank_country_faction } } 30 = {} } }
+			while = { count = 4 random_list = { 10 = { create_ship = { name = random random_existing_design = destroyer graphical_culture = event_target:bank_country_faction } } 50 = {} } }
+			while = { count = 2 random_list = { 10 = { create_ship = { name = random random_existing_design = cruiser graphical_culture = event_target:bank_country_faction } } 50 = {} } }
+			while = { count = 1 random_list = { 10 = { create_ship = { name = random random_existing_design = battleship graphical_culture = event_target:bank_country_faction } } 50 = {} } }
+			set_location = { target = event_target:bank_spawn_location distance = 16 angle = random  }
+			set_fleet_stance = aggressive
+			set_aggro_range_measure_from = self
+			set_aggro_range = 1000
+			set_fleet_flag = galaxy_bank_mercenary_fleet
+			assign_leader = last_created_leader
+		}
+	}	
+	last_created_fleet = { auto_move_to_planet = { target = event_target:bank_target_location destroy_on_arrival = no clear_auto_move_on_arrival = yes } }
+	if = {
+		limit = { check_variable = { which = galaxy_bank_loans_var value >= 100000 } }
+		last_created_fleet = {
+			while = { count = 2 random_list = { 10 = { create_ship = { name = random random_existing_design = battleship graphical_culture = event_target:bank_country_faction } } 10 = {} } }
+			while = { count = 3 random_list = { 10 = { create_ship = { name = random random_existing_design = cruiser graphical_culture = event_target:bank_country_faction } } 10 = {} } }
+			while = { count = 6 random_list = { 10 = { create_ship = { name = random random_existing_design = destroyer graphical_culture = event_target:bank_country_faction } } 10 = {} } }
+			while = { count = 9 random_list = { 10 = { create_ship = { name = random random_existing_design = corvette graphical_culture = event_target:bank_country_faction } } 10 = {} } }
+		}
+	}
+	if = {
+		limit = { check_variable = { which = galaxy_bank_loans_var value >= 200000 } }
+		last_created_fleet = {
+			while = { count = 1 random_list = { 10 = { create_ship = { name = random random_existing_design = titan graphical_culture = event_target:bank_country_faction } } 10 = {} } }
+			while = { count = 4 random_list = { 10 = { create_ship = { name = random random_existing_design = battleship graphical_culture = event_target:bank_country_faction } } 10 = {} } }
+			while = { count = 8 random_list = { 10 = { create_ship = { name = random random_existing_design = cruiser graphical_culture = event_target:bank_country_faction } } 10 = {} } }
+			while = { count = 14 random_list = { 10 = { create_ship = { name = random random_existing_design = destroyer graphical_culture = event_target:bank_country_faction } } 10 = {} } }
+			while = { count = 22 random_list = { 10 = { create_ship = { name = random random_existing_design = corvette graphical_culture = event_target:bank_country_faction } } 10 = {} } }
+		}
+	}
+}
+
+galaxy_bank_global_assault = {
+	if = { limit = { check_variable = { which = galaxy_bank_loans_var value >= 25000 } } random_list = { 2 = { while = { count = 6 galaxy_bank_fleet_attack_planet = yes } } 1 = {} } }
+	if = { limit = { check_variable = { which = galaxy_bank_loans_var value >= 50000 } } random_list = { 2 = { while = { count = 6 galaxy_bank_fleet_attack_planet = yes } } 1 = {} } }
+	if = { limit = { check_variable = { which = galaxy_bank_loans_var value >= 100000 } } random_list = { 2 = { while = { count = 10 galaxy_bank_fleet_attack_planet = yes } } 1 = {} } }
+	if = { limit = { check_variable = { which = galaxy_bank_loans_var value >= 200000 } } random_list = { 2 = { while = { count = 10 galaxy_bank_fleet_attack_planet = yes } } 1 = {} } }
+	if = { limit = { check_variable = { which = galaxy_bank_loans_var value >= 400000 } } random_list = { 2 = { while = { count = 10 galaxy_bank_fleet_attack_planet = yes } } 1 = {} } }
+}
+
+galaxy_bank_planet_invasion = {
+	random_owned_planet = {
+		save_event_target_as = target_planet_invasion
+		solar_system = {
+			random_fleet_in_system = {
+				limit = { 
+					exists = orbit orbit = { is_same_value = event_target:exercise_location } 
+					has_fleet_flag = galaxy_bank_mercenary_fleet
+				}
+				event_target:target_planet_invasion = {
+					while = { count = 10 create_army = { name = "Mercenary Army" owner = event_target:bank_country_faction species = event_target:bank_country_faction type = "assault_army" } }
+				}
+			}
+		}
+	}	
+}
+
+galaxy_bank_player_next_colony_target = {
+	random_owned_planet = {
+		limit = { NOR = { is_occupied_flag = yes has_modifier = bank_looted_planet } }
+		weights = {
+			base = 1
+			modifier = { add = 5 num_pops > 20 }
+			modifier = { add = 5 num_pops > 40 }
+			modifier = { add = 5 num_pops > 60 }
+			modifier = { add = 5 num_pops > 80 }
+			modifier = { add = 5 num_pops > 100 }
+			modifier = { add = 20 num_pops > 150 }
+			modifier = { add = 35 num_pops > 300 }
+		}
+		save_event_target_as = bank_target_location
+	}	
+}
+
+galaxy_bank_fleets_leave_galaxy = {
+	event_target:bank_country_faction = 
+	{ 
+		set_faction_hostility = { target = PREVPREV set_hostile = no set_neutral = yes set_friendly = no } 
+		while = {
+			count = 100
+			random_owned_fleet = {
+				random_rim_system = { random_system_planet = { limit = { is_primary_star = yes } save_event_target_as = destination_planet } }
+				remove_auto_move_target = yes
+				auto_move_to_planet = { target = event_target:destination_planet destroy_on_arrival = yes clear_auto_move_on_arrival = yes }			
+			}
+		}
+	}	
+}
+
+galaxy_bank_player_defeated = {
+	galaxy_bank_fleets_leave_galaxy = yes
+	remove_country_flag = galaxy_bank_loan_target
+	every_owned_planet = {
+		limit = { is_occupied_flag = yes exists = controller controller = { is_country_type = galaxy_bank_faction } }
+		set_owner = root
+		set_controller = root
+	}
+	galaxy_bank_pay_loan_sell_ressources_1000000_times = yes	
+}
+
+galaxy_bank_player_apologize = {
+	galaxy_bank_fleets_leave_galaxy = yes
+	remove_country_flag = galaxy_bank_loan_target
+	every_owned_planet = {
+		limit = { is_occupied_flag = yes exists = controller controller = { is_country_type = galaxy_bank_faction } }
+		set_owner = root
+		set_controller = root
+	}
+}
+
+galaxy_bank_create_pirate_country = {
+	create_country = {
+		name = "NAME_Pirates"
+		type = pirate
+		name_list = "PRT1"
+	}
+	every_country = { establish_communications_no_message = last_created_country }
+	last_created_country = { randomize_flag_symbol = "pirate" }
+}
+
+galaxy_bank_mission_pirates = {
+	random_system_within_border = {		
+		random_system_planet = { save_event_target_as = special_project_target }
+		galaxy_bank_create_pirate_country = yes
+		create_fleet = {
+			name = "NAME_Pirate_Fleet"
+			settings = { spawn_debris = no }
+			effect = {
+				set_owner = last_created_country
+				create_pirate_ships_3 = yes
+				create_pirate_ships_3 = yes
+				create_pirate_ships_3 = yes
+				create_pirate_ships_8 = yes
+				create_pirate_ships_8 = yes
+				create_ship = {
+					name = random 
+					design = "NAME_Corsair"
+					effect = { set_ship_flag = galaxy_bank_target_ship_project set_disable_at_health = 0.05 save_event_target_as = galaxy_bank_target_ship }
+				}
+				set_location = { target = event_target:special_project_target distance = 50 angle = random }
+				set_fleet_stance = aggressive
+				set_aggro_range_measure_from = self
+				set_aggro_range = 150
+			}
+		}
+	}
+	enable_special_project = { name = "GALAXY_BANK_ATTACK_PIRATES" location = event_target:galaxy_bank_target_ship owner = root }
+}
+
+galaxy_bank_mission_planet = {
+	random_system_within_border = {	
+		limit = { any_system_planet = { has_owner = no is_star = no is_asteroid = no } }	
+		random_system_planet = { limit = { has_owner = no is_star = no is_asteroid = no } save_event_target_as = galaxy_bank_target_planet }		
+	}
+	enable_special_project = { name = "GALAXY_BANK_SCAN_PLANET" location = event_target:galaxy_bank_target_planet owner = root }
+}
+
+galaxy_bank_mission_debris = {
+	random_system_within_border = {
+		save_event_target_as = galaxy_bank_target_system
+		random_system_planet = {
+			create_ambient_object = { type = "galaxy_bank_small_debris_object" location = from }
+			last_created_ambient_object = {
+				set_location = { target = PREV distance = 8 angle = random }
+				save_event_target_as = galaxy_bank_target_timed_object_debris					
+				set_ambient_object_flag = galaxy_bank_target_timed_object
+				#set_timed_ambient_object_flag = { flag = special_project_target_timed_object_timer days = 1100 }		
+			}
+		}
+		enable_special_project = { name = "GALAXY_BANK_SCAN_DEBRIS" location = event_target:galaxy_bank_target_timed_object_debris owner = root }
+	}
+}
+
+galaxy_bank_mission_ship = {
+	random_system_within_border = {
+		save_event_target_as = galaxy_bank_target_system
+		random_system_planet = {
+			create_ambient_object = { type = "galaxy_civilian_ship_object" location = from }
+			last_created_ambient_object = {
+				set_location = { target = PREV distance = 8 angle = random }
+				save_event_target_as = galaxy_bank_target_timed_object_ship					
+				set_ambient_object_flag = galaxy_bank_target_timed_object
+				#set_timed_ambient_object_flag = { flag = special_project_target_timed_object_timer days = 1100 }		
+			}
+		}
+		enable_special_project = { name = "GALAXY_BANK_SCAN_SHIP" location = event_target:galaxy_bank_target_timed_object_ship owner = root }
+	}
+}
+
+
+galaxy_bank_project_finish_select_ship = {
+	ROOT = { set_ship_flag = galaxy_bank_ship_finished_project }	
+	random_country = {
+		limit = { 
+			any_owned_ship = { 
+				has_ship_flag = galaxy_bank_target_ship_project
+				solar_system = { 
+					any_ship_in_system = { 
+						has_ship_flag = galaxy_bank_ship_finished_project 
+						#distance = { source = PREV max_distance <= 100 }
+					}
+				} 
+			}
+		}
+		random_owned_ship = {
+			limit = {
+				has_ship_flag = galaxy_bank_target_ship_project
+				solar_system = { 
+					any_ship_in_system = { 
+						has_ship_flag = galaxy_bank_ship_finished_project 
+						#distance = { source = PREV max_distance <= 100 }
+					}
+				} 
+			}
+			save_event_target_as = galaxy_bank_target_finished_project
+		}		
+		ROOT = { remove_ship_flag = galaxy_bank_ship_finished_project }	
+	}
+}
+
+galaxy_bank_project_finish_select_object = {	
+	ROOT = { set_ship_flag = galaxy_bank_ship_finished_project }	
+	random_ambient_object = {
+		limit = {
+			solar_system = { 
+				any_ship_in_system = { 
+					has_ship_flag = galaxy_bank_ship_finished_project 
+					#distance = { source = PREV max_distance <= 1 }
+				}
+			} 
+		}
+		save_event_target_as = galaxy_bank_target_finished_project
+		ROOT = { remove_ship_flag = galaxy_bank_ship_finished_project }
+	}
+}
+
+galaxy_bank_project_failed_destroy_pirates = {
+	every_owned_ship = {
+		limit = { has_ship_flag = galaxy_bank_target_ship_project  solar_system = { exists = space_owner space_owner = { is_same_value = root } } }
+		fleet = { destroy_fleet = this }
+	}
+}
+
+galaxy_bank_project_failed_destroy_objects = {
+	every_ambient_object = {
+		limit = { has_ambient_object_flag = galaxy_bank_target_timed_object solar_system = { exists = space_owner space_owner = { is_same_value = root } } }
+		destroy_ambient_object = this
+	}
+}
+
+galaxy_bank_project_failed_destroy_objects = {
+	every_ambient_object = {
+		limit = { has_ambient_object_flag = galaxy_bank_target_timed_object solar_system = { exists = space_owner space_owner = { is_same_value = root } } }
+		destroy_ambient_object = this
+	}
+}
+
+galaxy_bank_buy_actions = {
+	if = { limit = { check_variable = { which = galaxy_bank_actions_var value = 90 } } set_variable = { which = galaxy_bank_actions_var value = 100 } }
+	else_if = { limit = { check_variable = { which = galaxy_bank_actions_var value = 75 } } set_variable = { which = galaxy_bank_actions_var value = 90 } }
+	else_if = { limit = { check_variable = { which = galaxy_bank_actions_var value = 50 } } set_variable = { which = galaxy_bank_actions_var value = 75 } }
+	else_if = { limit = { check_variable = { which = galaxy_bank_actions_var value = 35 } } set_variable = { which = galaxy_bank_actions_var value = 50 } }
+	else_if = { limit = { check_variable = { which = galaxy_bank_actions_var value = 25 } } set_variable = { which = galaxy_bank_actions_var value = 35 } }
+	else_if = { limit = { check_variable = { which = galaxy_bank_actions_var value = 10 } } set_variable = { which = galaxy_bank_actions_var value = 25 } }
+	else_if = { limit = { check_variable = { which = galaxy_bank_actions_var value = 5 } } set_variable = { which = galaxy_bank_actions_var value = 10 } }
+	else_if = { limit = { check_variable = { which = galaxy_bank_actions_var value = 1 } } set_variable = { which = galaxy_bank_actions_var value = 5 } }
+	else_if = { limit = { check_variable = { which = galaxy_bank_actions_var value <= 0 } } set_variable = { which = galaxy_bank_actions_var value = 1 } }
+}

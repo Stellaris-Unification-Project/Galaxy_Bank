@@ -1,0 +1,59 @@
+special_project = {
+	key = "GALAXY_BANK_ATTACK_PIRATES"
+	icon = "gfx/interface/icons/situation_log/situation_log_ship.dds"
+	cost = 0
+	days_to_research = 180
+	tech_department = engineering_technology
+	picture = GFX_evt_pirate_armada
+	event_scope = ship_event
+	location = yes
+	timelimit = 1800
+	requirements = { shipclass_military = 1 }
+	on_success = { ship_event = { id = GalaxyBankEvents.122 } }	
+	on_fail = { country_event = { id = GalaxyBankEvents.3000 } }
+}
+
+special_project = {
+	key = "GALAXY_BANK_SCAN_PLANET"
+	icon = "gfx/interface/icons/situation_log/situation_log_quest.dds"
+	cost = 0
+	days_to_research = 180
+	tech_department = engineering_technology
+	picture = GFX_evt_alien_nature
+	event_scope = ship_event
+	location = yes
+	timelimit = 1800
+	requirements = { shipclass_science_ship = 1 leader = scientist skill = 3 }	
+	on_success = { ship_event = { id = GalaxyBankEvents.124 } }	
+	on_fail = { country_event = { id = GalaxyBankEvents.3002 } }
+}
+
+special_project = {
+	key = "GALAXY_BANK_SCAN_DEBRIS"
+	icon = "gfx/interface/icons/situation_log/situation_log_debris.dds"
+	cost = 0
+	days_to_research = 180
+	tech_department = engineering_technology
+	picture = GFX_evt_space_debris
+	event_scope = ship_event
+	location = yes
+	timelimit = 1800
+	requirements = { shipclass_science_ship = 1 leader = scientist skill = 1 }
+	on_success = { ship_event = { id = GalaxyBankEvents.126 } }	
+	on_fail = { country_event = { id = GalaxyBankEvents.3001 } }
+}
+
+special_project = {
+	key = "GALAXY_BANK_SCAN_SHIP"
+	icon = "gfx/interface/icons/situation_log/situation_log_engineering.dds"
+	cost = 0
+	days_to_research = 360
+	tech_department = engineering_technology
+	picture = GFX_evt_ship_in_orbit
+	event_scope = ship_event
+	location = yes
+	timelimit = 1800
+	requirements = { shipclass_constructor = 1 }
+	on_success = { ship_event = { id = GalaxyBankEvents.128 } }	
+	on_fail = { country_event = { id = GalaxyBankEvents.3001 } }
+}
