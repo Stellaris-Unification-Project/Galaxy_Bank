@@ -476,21 +476,21 @@ galaxy_bank_project_finish_select_object = {
 
 galaxy_bank_project_failed_destroy_pirates = {
 	every_owned_ship = {
-		limit = { has_ship_flag = galaxy_bank_target_ship_project  solar_system = { exists = space_owner space_owner = { is_same_value = root } } }
+		limit = { has_ship_flag = galaxy_bank_target_ship_project  solar_system = { exists = space_owner is_owned_by = root } }
 		fleet = { destroy_fleet = this }
 	}
 }
 
 galaxy_bank_project_failed_destroy_objects = {
 	every_ambient_object = {
-		limit = { has_ambient_object_flag = galaxy_bank_target_timed_object solar_system = { exists = space_owner space_owner = { is_same_value = root } } }
+		limit = { has_ambient_object_flag = galaxy_bank_target_timed_object solar_system = { exists = space_owner is_owned_by = root } }
 		destroy_ambient_object = this
 	}
 }
 
 galaxy_bank_project_failed_destroy_objects = {
 	every_ambient_object = {
-		limit = { has_ambient_object_flag = galaxy_bank_target_timed_object solar_system = { exists = space_owner space_owner = { is_same_value = root } } }
+		limit = { has_ambient_object_flag = galaxy_bank_target_timed_object solar_system = { exists = space_owner is_owned_by = root } }
 		destroy_ambient_object = this
 	}
 }
